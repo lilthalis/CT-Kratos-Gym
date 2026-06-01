@@ -619,9 +619,8 @@ body {
     display: flex;
     width: 100%;
 }
-
 /* ==========================================================================
-   LOCATION SECTION
+   LOCATION SECTION (ATUALIZADO - KRATOS GYM)
    ========================================================================== */
 .location-grid {
     display: grid;
@@ -654,11 +653,13 @@ body {
     font-size: 1rem;
     margin-bottom: 16px;
     color: #ffffff;
+    display: flex;
+    align-items: center;
 }
 
 .hours-box h4 i {
     color: var(--accent);
-    margin-right: 6px;
+    margin-right: 8px;
 }
 
 .hours-box p {
@@ -667,12 +668,31 @@ body {
     margin-bottom: 8px;
 }
 
+.hours-box p span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
 .hours-box p:last-child {
     margin-bottom: 0;
 }
 
 .contact-text {
     color: var(--text-muted);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-text a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-text a:hover {
+    color: var(--accent);
 }
 
 .contact-text i {
@@ -685,25 +705,31 @@ body {
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.map-placeholder {
+/* Garante que o mapa cubra o container perfeitamente */
+.map-container iframe {
     width: 100%;
     height: 100%;
-    background-color: #16161a;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    color: var(--text-muted);
+    border: 0;
 }
 
-.map-icon {
-    font-size: 3rem;
-    color: rgba(255,255,255,0.1);
+/* Responsividade para Celulares */
+@media (max-width: 992px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .map-container {
+        height: 320px;
+    }
+    .contact-text {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
-
 /* ==========================================================================
    CONTACT FORM SECTION
    ========================================================================== */
