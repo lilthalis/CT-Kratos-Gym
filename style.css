@@ -2,16 +2,21 @@
    RESET & VARIÁVEIS GLOBAIS (Estilo Premium Escuro)
    ========================================================================== */
 :root {
-    --bg-main: #0a0a0a;         /* Matte Black profundo */
-    --bg-surface: #121214;      /* Grafite escuro para superfícies tridimensionais */
-    --bg-card: rgba(26, 26, 29, 0.6); /* Transparência para Glassmorphism */
-    --accent: #39FF14;          /* Verde Neon Hyper */
-    --accent-glow: rgba(57, 255, 20, 0.35);
+    --bg-main: #16181b;
+    --bg-surface: #1f2227;
+    --bg-card: rgba(31, 34, 39, 0.75);
+
+    --accent: #39FF14;
+    --accent-glow: rgba(57, 255, 20, 0.45);
+
     --text-main: #ffffff;
-    --text-muted: #a0a0a5;
-    --border-color: rgba(255, 255, 255, 0.06);
+    --text-muted: #b5b7ba;
+
+    --border-color: rgba(255, 255, 255, 0.08);
+
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
+
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -31,6 +36,24 @@ html {
 
 body {
     overflow-x: hidden;
+    background: var(--bg-main);
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px
+        );
+
+    background-size: 4px 4px;
 }
 
 /* ==========================================================================
@@ -58,10 +81,10 @@ body {
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: 4px;
     margin-bottom: 24px;
 }
 
@@ -88,14 +111,19 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--accent);
-    color: #000000;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
 }
 
 .btn-primary:hover {
-    background-color: #ffffff;
-    color: #000000;
-    transform: translateY(-2px);
+    background: var(--accent);
+    color: #000;
+    box-shadow:
+        0 0 15px var(--accent),
+        0 0 35px var(--accent-glow);
+
+    transform: translateY(-3px);
 }
 
 .btn-glow {
@@ -181,8 +209,10 @@ body {
 .nav-menu a {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: .9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     transition: var(--transition-smooth);
 }
 
@@ -254,10 +284,11 @@ body {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 4.5rem;
+    font-size: 5rem;
     font-weight: 900;
     line-height: 0.95;
-    letter-spacing: -2px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
     margin-bottom: 24px;
 }
 
@@ -373,10 +404,15 @@ body {
 .premium-card {
     background: var(--bg-card);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
+
+    border: 1px solid rgba(57,255,20,.08);
+
     padding: 40px;
-    border-radius: 6px;
+
+    border-radius: 2px;
+
     transition: var(--transition-smooth);
+
     position: relative;
     overflow: hidden;
 }
@@ -393,9 +429,13 @@ body {
 }
 
 .premium-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(57, 255, 20, 0.3);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    transform: translateY(-6px);
+
+    border-color: rgba(57,255,20,.35);
+
+    box-shadow:
+        0 0 15px rgba(57,255,20,.08),
+        0 15px 30px rgba(0,0,0,.5);
 }
 
 .premium-card:hover::before {
@@ -926,4 +966,25 @@ body {
     .footer-grid { flex-direction: column; gap: 24px; text-align: center; }
     .image-compare { grid-template-columns: 1fr; }
     .img-box img { height: 280px; }
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 35%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent,
+            rgba(57,255,20,.03)
+        );
+
+    pointer-events: none;
 }
