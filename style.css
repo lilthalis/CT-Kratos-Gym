@@ -988,3 +988,23 @@ body::before {
 
     pointer-events: none;
 }
+
+.gym-values {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.value-item {
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+}
+
+.value-item span {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ffffff;
+}
